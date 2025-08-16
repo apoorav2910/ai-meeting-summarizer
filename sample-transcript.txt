@@ -1,0 +1,53 @@
+Meeting: Weekly Project Standup
+Date: December 15, 2024
+Attendees: Sarah (Project Manager), Mike (Developer), Lisa (Designer), John (QA)
+
+Sarah: Good morning everyone. Let's start with our weekly standup. Mike, can you give us an update on the authentication feature?
+
+Mike: Sure. I completed the login and registration functionality this week. The OAuth integration with Google and GitHub is working. I ran into some issues with the password reset flow, but I managed to resolve them yesterday. Next week, I'll be working on the user profile management feature.
+
+Sarah: Great work. Any blockers or concerns?
+
+Mike: No major blockers. I might need Lisa's input on the profile page design, but that can wait until next week.
+
+Lisa: Speaking of design, I finished the wireframes for the dashboard and user settings pages. I've uploaded them to Figma for everyone to review. I also completed the style guide updates with the new color palette we discussed last week. My focus next week will be on creating the final mockups for the dashboard.
+
+Sarah: Excellent. John, how's testing going?
+
+John: I completed testing for the search functionality and found three minor bugs, all related to edge cases with special characters. I've logged them in our bug tracking system. I also started testing the notification system - found one critical issue where emails aren't being sent for password resets. Mike, can you look into that?
+
+Mike: Absolutely. I'll prioritize that bug fix. Can you send me the details?
+
+John: Already in your inbox. I'll continue with notification testing and start on the authentication feature testing once you've deployed the fixes.
+
+Sarah: Perfect. Let me share some updates from stakeholder meetings. The client is very happy with our progress. They've requested one additional feature - the ability to export user data to CSV format. This wasn't in the original scope, but they're willing to extend the timeline by one week.
+
+Mike: That shouldn't be too complex. I can probably implement that alongside the profile management work.
+
+Lisa: Will this affect the UI design significantly?
+
+Sarah: Minimal impact. Just need an export button in the admin panel. Lisa, can you add that to your dashboard mockups?
+
+Lisa: Sure, no problem.
+
+Sarah: One more thing - we have a demo scheduled with the client for December 28th. We need to make sure the core features are stable by December 25th to give us buffer time. 
+
+John: I'll adjust my testing schedule to prioritize the core features.
+
+Sarah: Great. Any questions or concerns before we wrap up?
+
+Mike: Just to confirm - the CSV export feature is lower priority than the core functionality, right?
+
+Sarah: Correct. Core features first, then nice-to-haves.
+
+Sarah: Alright, let's have another productive week. Same time next Friday for our next standup. Thanks everyone!
+
+Action Items:
+- Mike: Fix password reset email bug (Priority: High)
+- Mike: Continue work on user profile management
+- Lisa: Add export button to dashboard mockups
+- John: Prioritize testing of core features
+- All: Review dashboard wireframes in Figma
+- Sarah: Send meeting recap to stakeholders
+
+Meeting ended at 10:30 AM

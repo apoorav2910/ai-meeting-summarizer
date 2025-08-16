@@ -59,7 +59,7 @@ dist
 
 # Gatsby files
 .cache/
-public
+# Note: React needs frontend/public, so we don't ignore it
 
 # Temporary folders
 tmp/

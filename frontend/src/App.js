@@ -19,6 +19,34 @@ function App() {
   const [emailSubject, setEmailSubject] = useState('Meeting Summary');
   const [isEmailSending, setIsEmailSending] = useState(false);
   const [message, setMessage] = useState('');
+  const [isEditingMode, setIsEditingMode] = useState(false);
+
+  // Convert basic markdown to HTML for display
+  const parseMarkdownToHTML = (text) => {
+    if (!text) return '';
+    
+    let html = text
+      // Convert **bold** to <strong>
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      // Convert *italic* to <em>
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      // Convert ## Headers to <h2>
+      .replace(/^## (.*$)/gm, '<h2>$1</h2>')
+      // Convert ### Headers to <h3>
+      .replace(/^### (.*$)/gm, '<h3>$1</h3>')
+      // Convert bullet points (• or -)
+      .replace(/^[•\-\*] (.*)$/gm, '<li>$1</li>')
+      // Convert line breaks to <br>
+      .replace(/\n/g, '<br>');
+    
+    // Wrap consecutive <li> tags in <ul>
+    html = html.replace(/(<li>.*?<\/li>)(?:\s*<br>\s*<li>.*?<\/li>)*/g, (match) => {
+      const listItems = match.replace(/<br>\s*/g, '').trim();
+      return `<ul>${listItems}</ul>`;
+    });
+    
+    return html;
+  };
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
@@ -49,6 +77,7 @@ function App() {
       });
 
       setSummary(response.data.summary);
+      setIsEditingMode(false); // Show formatted view by default
       setMessage('Summary generated successfully!');
     } catch (error) {
       console.error('Error generating summary:', error);
@@ -150,13 +179,38 @@ function App() {
         {/* Summary Display and Edit Section */}
         {summary && (
           <section className="summary-section">
-            <h2>4. Generated Summary (Editable)</h2>
-            <TextareaAutosize
-              value={summary}
-              onChange={(e) => setSummary(e.target.value)}
-              className="summary-output"
-              minRows={8}
-            />
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+              <h2>4. Generated Summary</h2>
+              <button 
+                onClick={() => setIsEditingMode(!isEditingMode)}
+                style={{
+                  padding: '8px 16px',
+                  backgroundColor: isEditingMode ? '#6c757d' : '#007bff',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '4px',
+                  cursor: 'pointer',
+                  fontSize: '14px'
+                }}
+              >
+                {isEditingMode ? 'View Formatted' : 'Edit Text'}
+              </button>
+            </div>
+            
+            {isEditingMode ? (
+              <TextareaAutosize
+                value={summary}
+                onChange={(e) => setSummary(e.target.value)}
+                className="summary-output"
+                minRows={8}
+                placeholder="Edit your summary here..."
+              />
+            ) : (
+              <div 
+                className="summary-display"
+                dangerouslySetInnerHTML={{ __html: parseMarkdownToHTML(summary) }}
+              />
+            )}
           </section>
         )}
 

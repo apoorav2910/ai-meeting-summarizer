@@ -93,6 +93,49 @@ section h2 {
   background-color: #fff;
 }
 
+/* Summary display with markdown-style formatting */
+.summary-display {
+  min-height: 200px;
+  background-color: #fff;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  font-family: inherit;
+  line-height: 1.6;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.summary-display h1,
+.summary-display h2,
+.summary-display h3 {
+  color: #333;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.summary-display h2 {
+  font-size: 1.2em;
+  font-weight: bold;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+.summary-display strong {
+  font-weight: bold;
+  color: #333;
+}
+
+.summary-display ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.summary-display li {
+  margin: 5px 0;
+}
+
 /* Button Styles */
 .generate-btn,
 .email-btn {
